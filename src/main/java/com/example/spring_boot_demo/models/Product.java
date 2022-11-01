@@ -21,8 +21,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String productName, int year, Double price, String url) {
-        this.id = id;
+    public Product(String productName, int year, Double price, String url) {
         this.productName = productName;
         this.year = year;
         this.price = price;
