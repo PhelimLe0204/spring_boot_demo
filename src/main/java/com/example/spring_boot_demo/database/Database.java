@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import com.example.spring_boot_demo.models.Product;
 import com.example.spring_boot_demo.repositories.ProductRepository;
 
+// Now connect with mysql using JPA
 @Configuration
 public class Database {
     // Logger

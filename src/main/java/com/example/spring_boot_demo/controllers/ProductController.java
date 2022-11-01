@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.spring_boot_demo.models.Product;
 import com.example.spring_boot_demo.models.ResponseObject;
 import com.example.spring_boot_demo.repositories.ProductRepository;
+
+import net.bytebuddy.asm.Advice.Return;
 
 @RestController
 @RequestMapping(path = "/api/v1/Products")
@@ -106,5 +109,22 @@ public class ProductController {
 
         return ResponseEntity.status(HttpStatus.OK).body(
                 new ResponseObject("OK", "Update product successfully!", updatedProduct));
+    }
+
+    /*------------------------------------------
+        5: Delete a Product => DELETE method
+    ------------------------------------------*/
+    @DeleteMapping("/{id}")
+    ResponseEntity<ResponseObject> deleteProduct(@PathVariable Long id) {
+        boolean exists = repository.existsById(id);
+
+        if (exists) {
+            repository.deleteById(id);
+            return ResponseEntity.status(HttpStatus.OK).body(
+                    new ResponseObject("Ok", "Delete product successfully!", ""));
+        }
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                new ResponseObject("Failed", "Cannot find product to delete!", ""));
     }
 }
