@@ -19,8 +19,6 @@ import com.example.spring_boot_demo.models.Product;
 import com.example.spring_boot_demo.models.ResponseObject;
 import com.example.spring_boot_demo.repositories.ProductRepository;
 
-import net.bytebuddy.asm.Advice.Return;
-
 @RestController
 @RequestMapping(path = "/api/v1/Products")
 public class ProductController {
