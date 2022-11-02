@@ -35,10 +35,8 @@ public class Database {
             public void run(String... args) throws Exception {
                 Product productA = new Product("Macbook pro 16 inch", 2020, 2400.0, "");
                 Product productB = new Product("Ipad air green", 2021, 599.0, "");
-                Product productC = new Product("Laptop DELL core i5", 2022, 699.0, "");
                 logger.info("Insert data: " + productRepository.save(productA));
                 logger.info("Insert data: " + productRepository.save(productB));
-                logger.info("Insert data: " + productRepository.save(productC));
             }
         };
     }
